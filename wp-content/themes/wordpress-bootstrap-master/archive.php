@@ -5,6 +5,17 @@
 				<div id="main" class="col-sm-8 clearfix" role="main">
 				
 					<div class="page-header">
+
+							<?php
+	
+							// print the Primary Category name on the archive
+							$terms = get_the_term_list( null, 'primary_category');
+							if(!empty($terms)){
+								 echo '<h3>Primary category archive: '.$terms.'</h3>';								
+							}
+
+							?>
+
 					<?php if (is_category()) { ?>
 						<h1 class="archive_title h2">
 							<span><?php _e("Posts Categorized:", "wpbootstrap"); ?></span> <?php single_cat_title(); ?>
@@ -31,6 +42,9 @@
 					    </h1>
 					<?php } ?>
 					</div>
+
+
+
 
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
